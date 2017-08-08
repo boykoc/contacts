@@ -25,10 +25,21 @@ class App extends Component {
     ]
   }
   
+  removeContact = (contact) => {
+    // Updating state based on the current state so use setState by passing in 
+    // function vs other that takes object.
+    
+    // Create a new contact state that returns the contacts excluding the one
+    // that was clicked on.
+    this.setState((state) => ({
+      contacts: state.contacts.filter((c) => c.id !== contact.id)
+    }))
+  }
+  
   render() {
     return (
       <div>
-        <ListContacts contacts={this.state.contacts} />
+        <ListContacts contacts={this.state.contacts} onDeleteContact={this.removeContact} />
       </div>
     )
   }
