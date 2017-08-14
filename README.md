@@ -1,3 +1,26 @@
+## C9.io Setup
+
+This setup assumes you're running both the client and server from the same workspace in C9.io.
+
+- Workspace (dir)
+-- reactnd-contacts-server (dir)
+-- contacts (dir)
+
+General:
+
+- Setup multiple ports as per the [instructions](https://docs.c9.io/docs/multiple-ports)
+
+Server:
+
+- Start server with `ORIGIN=http://react-codyboyko.c9users.io:8081 PORT=8081 node server.js`
+-- Setting the port as part of the origin is important as the config.js doesn't set it otherwise when you set an origin
+
+Client:
+
+- Update `./utils/ContactsAPI.js` by updating the `const api` to `const api = process.env.REACT_APP_CONTACTS_API_URL || 'http://react-codyboyko.c9users.io:8081'`
+- Start server with `ORIGIN=http://react-codyboyko.c9users.io PORT=8080 npm start`
+- View the app in a separate window to get the contacts to load from the server.
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
